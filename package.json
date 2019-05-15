@@ -4,7 +4,7 @@
   "description": "saus",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "test": "nodemon --exec mocha --recursive -R list"
   },
   "repository": {
