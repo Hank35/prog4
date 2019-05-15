@@ -1,0 +1,7 @@
+{
+"dbHost" : "coolsma.synology.me",
+"dbUser" : "2019-I14",
+"dbPassword" : "2019-I14",
+"dbDatabase": "2019-i14-appartementen",
+"secretkey": "Moersleutel"
+}
