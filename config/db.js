@@ -13,8 +13,17 @@ var connectionSettings = {
     database: process.env.DB_DATABASE || config.dbDatabase,
     debug: false
 }
+var tconnectionSettings = {
+    host: process.env.DB_HOST || config.tHost,
+    user: process.env.DB_USER || config.tUser,
+    password: process.env.DB_USER || config.tPassword,
+    database: process.env.DB_DATABASE || config.tDatabase
+
+}
 
 var connection = mysql.createConnection(connectionSettings);
+
+var testConnection = mysql.createConnection(tconnectionSettings);
 
 connection.connect(function(error) {
     if (error) {
@@ -22,6 +31,14 @@ connection.connect(function(error) {
         return;
     } else {
         console.log("Connected to database " + connectionSettings.database + " on " + connectionSettings.host);
+    }
+});
+testConnection.connect(function(error) {
+    if (error) {
+        console.error("Error connecting to test database " + tconnectionSettings.database + " on " + tconnectionSettings.host + ": " + error.message);
+        return;
+    } else {
+        console.log("Connected to test database " + tconnectionSettings.database + " on " + tconnectionSettings.host);
     }
 });
 
