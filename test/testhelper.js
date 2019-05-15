@@ -1,12 +1,6 @@
 const sql = require('mysql')
 const app = require('../server')
-//Create connection
-const db = sql.createConnection({
-    host: 'localhost',
-    user: 'rental',
-    password: 'localpassword',
-    database: 'rental'
-});
+var db = require('../config/db');
 
 beforeEach((done) => {
     let usersdelete = 'DELETE FROM users'

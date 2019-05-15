@@ -7,8 +7,7 @@ var validator = require("email-validator");
 var postalCodes = require('postal-codes-js');
 
 routes.get('/users', function(req,res){
-    let sql = 'SELECT * FROM user'
-    db.query(sql, (err, result) => {
+    db.query('SELECT * FROM user', (err, result) => {
         if (err) throw (err)
         else {
             res.send(result, 'User has been returned', (200))
@@ -20,8 +19,7 @@ routes.post('/users/login', function(req, res) {
         EmailAddress: req.body.EmailAddress,
         Password: req.body.Password
     }
-    let sql = 'SELECT password FROM user WHERE EmailAddress = "' + user.EmailAddress + '"'
-    db.query(sql, (err, result) => {
+    db.query('SELECT password FROM user WHERE EmailAddress = "' + user.EmailAddress + '"', (err, result) => {
         if (err) {
             console.log(err)
         } else {
@@ -67,8 +65,7 @@ routes.post('/users', function  (req, res) {
       }
 
     if( validator.validate( phonecheck & postalCodes.validate('nl', PostalCode == true))){
-            let sql = 'INSERT INTO user(EmailAddress, Password, PhoneNumber, FirstName, LastName, City, StreetAddress, PostalCode, DataOfBirth) VALUES ("' + user.EmailAddress + '", "' + user.Password + '", "' + user.PhoneNumber + '", "' + user.FirstName + '", "' + user.LastName + '", "' + user.City + '", "' + user.StreetAddress + '", "'+ user.DataOfBirth + '", "' + user.PostalCode + '")'
-                    db.query(sql, (err, result) => {
+                    db.query('INSERT INTO user(EmailAddress, Password, PhoneNumber, FirstName, LastName, City, StreetAddress, PostalCode, DataOfBirth) VALUES ("' + user.EmailAddress + '", "' + user.Password + '", "' + user.PhoneNumber + '", "' + user.FirstName + '", "' + user.LastName + '", "' + user.City + '", "' + user.StreetAddress + '", "'+ user.DataOfBirth + '", "' + user.PostalCode + '")', (err, result) => {
                     if (err) {
                         res.send(err)
                     console.log('Error: ' + err)

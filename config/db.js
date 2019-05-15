@@ -25,20 +25,21 @@ var connection = mysql.createConnection(connectionSettings);
 
 var testConnection = mysql.createConnection(tconnectionSettings);
 
-connection.connect(function(error) {
-    if (error) {
-        console.error("Error connecting to database " + connectionSettings.database + " on " + connectionSettings.host + ": " + error.message);
-        return;
-    } else {
-        console.log("Connected to database " + connectionSettings.database + " on " + connectionSettings.host);
-    }
-});
 testConnection.connect(function(error) {
     if (error) {
         console.error("Error connecting to test database " + tconnectionSettings.database + " on " + tconnectionSettings.host + ": " + error.message);
         return;
     } else {
         console.log("Connected to test database " + tconnectionSettings.database + " on " + tconnectionSettings.host);
+    }
+});
+
+connection.connect(function(error) {
+    if (error) {
+        console.error("Error connecting to database " + connectionSettings.database + " on " + connectionSettings.host + ": " + error.message);
+        return;
+    } else {
+        console.log("Connected to database " + connectionSettings.database + " on " + connectionSettings.host);
     }
 });
 

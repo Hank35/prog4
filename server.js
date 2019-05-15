@@ -33,9 +33,12 @@ app.use('*', function(req, res) {
         'error': 'Deze URL is niet beschikbaar.'
     });
 });
-
 app.listen(process.env.PORT || 3000, function(){
-	console.log('Server is listening on port 3000');	
+// 	console.log('Server is listening on port 3000');	
 });
+console.log(`Your port is ${process.env.PORT}`); // undefined
+const dotenv = require('dotenv');
+dotenv.config();
+console.log(`Your port is ${process.env.PORT}`);
 
 module.exports = app;
